@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru"
+			xmlns:th="http://www.thymeleaf.org"
+>
+<hr th:replace="~{f::head}">
+
+<body>
+
+<hr th:replace="~{f::header}">
+
+<main>
+	<form th:action="@{/register}" th:object="${user}" method="post">
+		<p>
+			<label for="email">Email</label>
+			<input th:field="*{email}" placeholder="Введите ваш email" type="email" id="email" autofocus>
+			<samp th:errors="*{email}"></samp>
+		</p>
+		<p>
+			<label for="password">Пароль</label>
+			<input th:field="*{password}" placeholder="Введите пароль" type="password" id="password">
+			<samp th:errors="*{password}"></samp>
+		</p>
+		<p>
+			<button type="submit">Регистрация</button>
+			<a href="/login">Войти</a>
+		</p>
+	</form>
+</main>
+
+</body>
+</html>

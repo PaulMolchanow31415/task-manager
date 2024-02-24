@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru"
+			xmlns:th="http://www.thymeleaf.org"
+>
+
+<hr th:replace="~{f::head}">
+
+<body>
+<hr th:replace="~{f::header}">
+
+
+<h2>Все задачи</h2>
+
+<a href="/task/create" class="button">Добавить задачу +</a>
+
+<p></p>
+
+<article th:each="t : ${tasks}" th:object="${t}">
+	
+	<div>
+		<time th:text="${#temporals.format(t.deadDate, 'YY:MM:dd')}"/>
+		
+		<p th:text="*{content}"/>
+		
+		<a th:href="|/task/edit/*{id}|" class="button">Редактировать</a>
+		<a th:if="*{status.name == 'Не завершенный'}" th:href="|/task/complete/*{id}|">Завершить</a>
+		<a th:href="|/task/destroy/*{id}|"><samp>Удалить</samp></a>
+	</div>
+
+</article>
+
+</body>
+</html>

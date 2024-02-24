@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru"
+			xmlns:th="http://www.thymeleaf.org"
+>
+
+<hr th:replace="~{f::head}">
+<body>
+<hr th:replace="~{f::header}">
+
+<p></p>
+
+<article>
+	<h2>Редактирование задачи</h2>
+	
+	<form th:action="@{/task/store}" method="post" th:object="${task}">
+		<input type="hidden" name="id" th:field="*{id}">
+		<p>
+			<label for="deadDate">Дата окончания</label>
+			<input th:field="*{deadDate}" type="datetime-local" name="content" id="deadDate">
+			<samp th:errors="*{deadDate}"></samp>
+		</p>
+		<p>
+			<label for="priority">Приоритет</label>
+			<input th:field="*{priority}" type="number" id="priority">
+			<samp th:errors="*{priority}"></samp>
+		</p>
+		<p>
+			<textarea th:field="*{content}" name="content" cols="30" rows="10"></textarea>
+			<samp th:errors="*{content}"></samp>
+		</p>
+		<button type="submit">Сохранить</button>
+	</form>
+</article>
+
+</body>
+</html>
