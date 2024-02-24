@@ -37,8 +37,8 @@ public class TaskService {
 				.orElseThrow(() -> new RuntimeException("Ошибка, Task не найден"));
 	}
 	
-	public List<Task> all() {
-		return repository.findAll();
+	public List<Task> all(Long creatorId) {
+		return repository.findAllByCreatorId(creatorId);
 	}
 	
 	public void complete(Long id) {

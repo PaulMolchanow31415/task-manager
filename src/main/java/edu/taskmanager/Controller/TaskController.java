@@ -3,7 +3,6 @@ package edu.taskmanager.Controller;
 import edu.taskmanager.Dto.TaskDto;
 import edu.taskmanager.Security.UserPrincipal;
 import edu.taskmanager.Service.TaskService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -34,8 +33,8 @@ public class TaskController {
 	}
 	
 	@GetMapping("/all")
-	String showTasks(Model model) {
-		model.addAttribute("tasks", service.all());
+	String showTasks(Model model, @AuthenticationPrincipal UserPrincipal principal) {
+		model.addAttribute("tasks", service.all(principal.getId()));
 		return "tasks";
 	}
 	

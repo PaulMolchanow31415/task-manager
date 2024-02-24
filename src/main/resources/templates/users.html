@@ -8,10 +8,11 @@
 
 <h2>Пользователи</h2>
 
-<article th:each="u : ${users}" th:object="${u}">
+<article th:each="u : ${users}" th:object="${u}" th:if="${#authentication.principal.id != u.id}">
 	<div>
 		<p th:text="*{updatedAt}" />
 		<p th:text="*{email}" />
+		<a th:href="|/user/destroy/*{id}|"><samp>Удалить</samp></a>
 	</div>
 </article>
 </body>
