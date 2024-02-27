@@ -9,6 +9,10 @@
 
 <hr th:replace="~{f::header}">
 
+<div th:if="${param.logout}" class="notice">
+	Вы успено вышли из своего аккаунта
+</div>
+
 <form th:action="@{/login}" method="post">
 	<p>
 		<label for="email">Email</label>

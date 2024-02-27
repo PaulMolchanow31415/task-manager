@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class UniqueNumberValidator implements ConstraintValidator<UniqueNumber, Integer> {
+public class UniquePriorityValidator implements ConstraintValidator<UniquePriority, Integer> {
 	private final TaskRepository repository;
 	
 	@Override
